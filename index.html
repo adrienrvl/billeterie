@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simulation d'ouverture de billetterie</title>
+</head>
+<body>
+<h1>Ouverture de la billetterie</h1>
+<p id="countdown"></p>
+<button onclick="refreshPage()">Rafraîchir</button>
+
+<script>
+  var countdownElement = document.getElementById("countdown");
+  var countdownTime = new Date("2023-06-06T14:10:00"); // Heure d'ouverture prévue de la billetterie
+
+  // Fonction pour actualiser l'affichage du compte à rebours
+  function updateCountdown() {
+    var now = new Date();
+    var timeLeft = countdownTime - now;
+
+    if (timeLeft > 0) {
+      var minutes = Math.floor((timeLeft / 1000 / 60) % 60);
+      var seconds = Math.floor((timeLeft / 1000) % 60);
+      countdownElement.innerHTML = "Temps restant : " + minutes + " minutes " + seconds + " secondes";
+    } else {
+      countdownElement.innerHTML = "La billetterie est maintenant ouverte !";
+    }
+  }
+
+  // Appel initial de la fonction pour afficher le compte à rebours
+  updateCountdown();
+
+  // Fonction pour simuler le rafraîchissement de la page
+  function refreshPage() {
+    updateCountdown(); // Actualise le compte à rebours
+    // Ajoute ici la logique pour rafraîchir la page réellement
+  }
+</script>
+</body>
+</html>
